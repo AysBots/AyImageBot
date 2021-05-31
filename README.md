@@ -20,6 +20,6 @@ Everyone / Anyone can use this bot. It's FREE.
 
 AyImageBot is owned by everyone, who contribute to [AysBots](https://github.com/AysBots). 
 so, GO AHEAD RIGHT NOW and find a bug in AyImageBot or help us improve it.
-Make sure to Add your name in [Contributors.md](https://github.com/AysBots/AyImageBot/blob/master/Contributors.md)
+Make sure to Add your name in [CONTRIBUTORS.md](https://github.com/AysBots/AyImageBot/blob/master/CONTRIBUTORS.md)
 
 ## If you like our work consider giving ⭐
