@@ -32,6 +32,9 @@ def start(update: Update, context: CallbackContext):
 def unknown(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
 
+def unknown_text(update: Update, context: CallbackContext):
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I don't know that.")
+
 
 def get(update, context):
     print(update.message.text)
@@ -55,15 +58,17 @@ dispatcher = updater.dispatcher
 
 # Syncing commands with functions
 start_handler = CommandHandler('start', start)
-start_handler = CommandHandler('get', get)
+get_handler = CommandHandler('get', get)
 unknown_handler = MessageHandler(Filters.command, unknown)
+unknown_text_handler = MessageHandler(Filters.text, unknown_text)
 
 
 # Adding Handlers
-dispatcher.add_handler(start_handler)                
+dispatcher.add_handler(start_handler)
+dispatcher.add_handler(get_handler)  
 dispatcher.add_error_handler(error)
 dispatcher.add_handler(unknown_handler)
-
+dispatcher.add_handler(unknown_text_handler)
 
 # Starting Bot
 updater.start_polling()
