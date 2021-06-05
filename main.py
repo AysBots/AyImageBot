@@ -13,7 +13,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger= logging.getLogger(__name__)
 print("[+] LOGGER STARTED.....")
 
-# General Function
+# General Functions
 def get_image(url, print_url=False):
     '''
     Convert URL to original image link
@@ -22,7 +22,11 @@ def get_image(url, print_url=False):
     if print_url:
         print(response.url)
     return response.url
-url= r"https://source.unsplash.com/random"
+
+def get_url(width='1600', height='900', search='random'):
+    raw_url = f"https://source.unsplash.com/{width}x{height}/?{search}"
+    return raw_url
+
 
 # Command Functions
 def start(update: Update, context: CallbackContext):
