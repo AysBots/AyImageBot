@@ -9,4 +9,4 @@ def write_json(new_data, filename):
         with open(filename, 'w') as file:
             temp = file_data["user_details"]
             temp.append(new_data)
-            json.dump(file_data, file, indent=4)
+            json.dump(file_data, file, indent=2)
