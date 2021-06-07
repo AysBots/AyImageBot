@@ -1,7 +1,9 @@
-import requests, os, dotenv, logging
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+import os, dotenv, logging, json
+from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
 from telegram import Update
-
+from core.jsonify import write_json
+from core.urls import get_image, get_url
+from core.commands import start, unknown, unknown_text, get
 
 # Initialize Bot Key
 dotenv.load_dotenv()
@@ -13,44 +15,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger= logging.getLogger(__name__)
 print("[+] LOGGER STARTED.....")
 
-# General Functions
-def get_image(url, print_url=False):
-    '''
-    Convert URL to original image link
-    '''
-    response = requests.get(url)
-    if print_url:
-        print(response.url)
-    return response.url
-
-def get_url(width='1600', height='900', search='random'):
-    raw_url = f"https://source.unsplash.com/{width}x{height}/?{search}"
-    return raw_url
-
-
-# Command Functions
-def start(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm a bot, please talk to me!")
-
-
-def unknown(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand that command.")
-
-def unknown_text(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I don't know that.")
-
-
-def get(update, context):
-    print(update.message.text)
-    msg = update.message.text
-    msg = msg.split(" ")
-    msg.pop(0)
-    # for i in msg:
-    #     print(i)
-    # print(f" this is {msg}")
-    # update.message.reply_photo(get_image(url))
-
-
+# Check for errors
 def error(update: Update, context: CallbackContext):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
