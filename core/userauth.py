@@ -1,8 +1,7 @@
-import json
-from .jsonify import write_json
+from tinydb import TinyDB, Query
 
 
-def auth(update, context, filename):
+def auth(update, context, filename, silent: bool):
     json_data = update.effective_user
     formatted_data = {
         "id": json_data.id,
@@ -13,17 +12,25 @@ def auth(update, context, filename):
         "type": f"{update.effective_chat.type}",
         "requests": 0
     }
-    existing_id = []
-    with open(filename, 'r') as f:
-        file_data = json.load(f)
-        temp_file_data = file_data["user_details"]
-        for i in temp_file_data:
-            if i['id'] == json_data.id:
-                existing_id.append(i['id'])
-        if json_data.id not in existing_id:
-            write_json(formatted_data, filename)
+    db = TinyDB(filename, sort_keys=True, indent=2, separators=(',', ': '))
+    db.default_table_name = "Users"
+    Users = Query()
+    if db.search(Users.id == json_data.id) == []:
+        db.insert(formatted_data)
+        if not silent:
             context.bot.send_message(
                 chat_id=update.effective_chat.id, text=f"Hi {json_data.first_name}\nYou are Sucessfully Registered to AyImageBot Service.\nUse /get `<your-search>` to find a image.\nThank You")
-        else:
+    else:
+        if not silent:
             context.bot.send_message(
                 chat_id=update.effective_chat.id, text=f"Hi {json_data.first_name}\nWelcome Back again\nYou are Already Registered to AyImageBot Service.\nUse /get `<your-search>` to find a image.\nThank You")
+        db.update({'username': json_data.username},
+                  Users.id == json_data.id)
+        db.update({'first_name': json_data.first_name},
+                  Users.id == json_data.id)
+        db.update({'last_name': json_data.last_name},
+                  Users.id == json_data.id)
+
+
+def update_requests(update, filename):
+    pass
