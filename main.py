@@ -1,10 +1,8 @@
 import os
 import dotenv
 import logging
-import json
 from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
 from telegram import Update
-from core.jsonify import write_json
 from core.urls import get_image, get_url
 from core.commands import start, unknown, unknown_text, get
 
