@@ -33,4 +33,10 @@ def auth(update, context, filename, silent: bool):
 
 
 def update_requests(update, filename):
-    pass
+    json_data = update.effective_user
+    db = TinyDB(filename, sort_keys=True, indent=2, separators=(',', ': '))
+    db.default_table_name = "Users"
+    Users = Query()
+    old_requests = db.get(Users.id == json_data.id)['requests']
+    db.update({'requests': old_requests+1},
+              Users.id == json_data.id)
