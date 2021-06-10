@@ -18,4 +18,4 @@ jobs:
         - python -m pip install --upgrade pip
       env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
 install: pip3 install --upgrade pip
-script: python3 my_app.py || python my_app.py
+script: python3 test_main.py || python main.py
