@@ -11,13 +11,16 @@ def get_image(url, print_url=False):
     return response.url
 
 
-def get_url(width='1600', height='900', search='random'):
+def get_url_source_unsplash(width='1600', height='900', search='random'):
     if search == "" or search == " ":
         search = 'random'
-    raw_url = f"https://source.unsplash.com/{width}x{height}/?{search}"
-    return raw_url
+    raw_unsplash_url = f"https://source.unsplash.com/{width}x{height}/?{search}"
+    return raw_unsplash_url
 
+
+def get_url():
+    pass
 
 if __name__ == "__main__":
     # Testing Code
-    get_image(get_url(search="computer"), True)
+    get_image(get_url_source_unsplash(search="computer"), True)

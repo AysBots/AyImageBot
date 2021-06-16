@@ -1,6 +1,6 @@
 from telegram.ext import CallbackContext
 from telegram import Update
-from .urls import get_image, get_url
+from .urls import get_image, get_url_source_unsplash
 from .userauth import auth, update_requests
 from .variables import DATAFILE
 
@@ -28,6 +28,6 @@ def get(update, context):
     msg = msg.split(" ").pop(0)
     context.bot.send_message(
         chat_id=update.effective_chat.id, text=f"Sending Image.\nPlease Wait...")
-    update.message.reply_photo(get_image(get_url(search=msg)))
+    update.message.reply_photo(get_image(get_url_source_unsplash(search=msg)))
     auth(update=update, context=context, filename=DATAFILE, silent=True)
     update_requests(update=update, filename=DATAFILE)
