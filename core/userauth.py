@@ -1,4 +1,6 @@
 from tinydb import TinyDB, Query
+from .snips import all_permit
+import os
 
 
 def auth(update, context, filename, silent: bool):
@@ -12,6 +14,14 @@ def auth(update, context, filename, silent: bool):
         "type": f"{update.effective_chat.type}",
         "requests": 0
     }
+    if os.path.isfile(filename):
+        pass
+    else:
+        open(filename, "a").close()
+    try:
+        all_permit(filename)
+    except:
+        pass
     db = TinyDB(filename, sort_keys=True, indent=2, separators=(',', ': '))
     db.default_table_name = "Users"
     Users = Query()
