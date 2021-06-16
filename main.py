@@ -12,7 +12,7 @@ try:
     dotenv.load_dotenv()
     API_KEY = os.getenv("API_KEY")
 except:
-    API_KEY = ${{ secrets.AyImageBot_API_KEY }}
+    API_KEY = ${{ secrets.AYIMAGEBOT_API_KEY }}
 print("[+] APIKEY LOADED.....")
 
 
