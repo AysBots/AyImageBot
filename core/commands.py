@@ -26,8 +26,9 @@ def unknown_text(update: Update, context: CallbackContext):
 def get(update, context):
     msg = update.message.text
     msg = msg.split(" ").pop(0)
-    context.bot.send_message(
-        chat_id=update.effective_chat.id, text=f"Sending Image.\nPlease Wait...")
-    update.message.reply_photo(get_image(get_url_source_unsplash(search=msg)))
-    auth(update=update, context=context, filename=DATAFILE, silent=True)
-    update_requests(update=update, filename=DATAFILE)
+    if update.effective_chat.type == "private":
+        context.bot.send_message(
+            chat_id=update.effective_chat.id, text=f"Sending Image.\nPlease Wait...")
+        update.message.reply_photo(get_image(get_url_source_unsplash(search=msg)))
+        update_requests(update=update, filename=DATAFILE)
+        auth(update=update, context=context, filename=DATAFILE, silent=True)

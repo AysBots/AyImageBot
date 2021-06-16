@@ -18,10 +18,10 @@ def auth(update, context, filename, silent: bool):
         pass
     else:
         open(filename, "a").close()
-    try:
-        all_permit(filename)
-    except:
-        pass
+        try:
+            all_permit(filename)
+        except:
+            pass
     db = TinyDB(filename, sort_keys=True, indent=2, separators=(',', ': '))
     db.default_table_name = "Users"
     Users = Query()
