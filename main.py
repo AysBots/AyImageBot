@@ -8,8 +8,11 @@ from core.commands import start, unknown, unknown_text, get
 
 
 # Initialize Bot Key
-dotenv.load_dotenv()
-API_KEY = os.getenv("API_KEY")
+try:
+    dotenv.load_dotenv()
+    API_KEY = os.getenv("API_KEY")
+except:
+    API_KEY = os.environ.get("AYIMAGEBOT_API_KEY")
 print("[+] APIKEY LOADED.....")
 
 

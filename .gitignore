@@ -2,4 +2,4 @@
 .vscode
 test
 __pycache__/
-*.json
+data.json
