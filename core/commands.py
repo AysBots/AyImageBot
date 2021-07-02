@@ -48,5 +48,6 @@ def get(update, context):
         except:
             context.bot.send_message(
                 chat_id=update.effective_chat.id, text="Sorry, I am facing some problem.\nPlease try again.")
-        update_requests(update=update, filename=DATAFILE)
         auth(update=update, context=context, filename=DATAFILE, silent=True)
+        update_requests(update=update, filename=DATAFILE)
+        
