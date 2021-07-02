@@ -3,16 +3,12 @@ import dotenv
 import logging
 from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
 from telegram import Update
-from core.urls import get_image, get_url
 from core.commands import start, unknown, unknown_text, get
+from api_loader import AYIMAGEBOT_API_KEY
 
 
 # Initialize Bot Key
-try:
-    dotenv.load_dotenv()
-    API_KEY = os.getenv("AYIMAGEBOT_API_KEY")
-except:
-    API_KEY = os.environ.get("AYIMAGEBOT_API_KEY")
+API_KEY = AYIMAGEBOT_API_KEY
 print("[+] APIKEY LOADED.....")
 
 

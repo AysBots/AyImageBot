@@ -1,8 +1,9 @@
 from telegram.ext import CallbackContext
 from telegram import Update
-from .urls import get_image, get_url_source_unsplash
+from .urls import get_image, get_final_image, fetch_unsplash_api
 from .userauth import auth, update_requests
-from .variables import DATAFILE
+from .variables import DATAFILE, UNSPLASH_CLIENT_KEY
+import os
 
 
 def start(update: Update, context: CallbackContext):
@@ -25,10 +26,27 @@ def unknown_text(update: Update, context: CallbackContext):
 
 def get(update, context):
     msg = update.message.text
-    msg = msg.split(" ").pop(0)
+    if msg == "" or msg == "/get" or msg == "/get ":
+        msg = "random"
+    else:
+        msg = msg.split(" ")[1:]
+        str1 = ""
+        for i in msg:
+            str1 = str1+i
+        msg = str1
+    image_name = str(update.effective_user.id) + '.jpeg'
     if update.effective_chat.type == "private":
         context.bot.send_message(
             chat_id=update.effective_chat.id, text=f"Sending Image.\nPlease Wait...")
-        update.message.reply_photo(get_image(get_url_source_unsplash(search=msg)))
+        try:
+            get_final_image(CLIENT_KEY=UNSPLASH_CLIENT_KEY,
+                            query=msg, filename=image_name)
+            context.bot.sendPhoto(
+                chat_id=update.effective_chat.id, photo=open(image_name, 'rb'))
+            # update.message.reply_photo(open('image.jpeg','rb'))
+            os.remove(image_name)
+        except:
+            context.bot.send_message(
+                chat_id=update.effective_chat.id, text="Sorry, I am facing some problem.\nPlease try again.")
         update_requests(update=update, filename=DATAFILE)
         auth(update=update, context=context, filename=DATAFILE, silent=True)
