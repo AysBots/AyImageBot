@@ -41,7 +41,7 @@ def fetch_unsplash_api(CLIENT_KEY, query):
 
 def get_final_image(CLIENT_KEY, query, filename):
     url = fetch_unsplash_api(CLIENT_KEY, query)
-    urlretrieve(url, name)
+    urlretrieve(url, filename)
     return None
 
 

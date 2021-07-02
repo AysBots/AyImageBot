@@ -14,4 +14,3 @@ try:
     UNSPLASH_CLIENT_KEY = os.getenv("UNSPLASH_CLIENT_KEY")
 except:
     UNSPLASH_CLIENT_KEY = os.environ.get("UNSPLASH_CLIENT_KEY")
-    
