@@ -41,3 +41,9 @@ Remember to:
 
 - Capitalize the subject line
 - Use the imperative mood in the subject line
+
+## *Important* for contributors:
+- If you are adding a *new feature*, then create a new file / modify files in `contrib` directory only.
+- You can *modify* `core` directory only, if you are fixing a *bug*.
+
+### Happy Coding !!
