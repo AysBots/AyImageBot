@@ -3,7 +3,7 @@ import dotenv
 import logging
 from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
 from telegram import Update
-from core.commands import start, unknown, unknown_text, get
+from core.commands import start, help_cmd, about, unknown, unknown_text, get
 from api_loader import AYIMAGEBOT_API_KEY
 
 
@@ -31,6 +31,8 @@ dispatcher = updater.dispatcher
 
 # Syncing commands with functions
 start_handler = CommandHandler('start', start)
+about_handler = CommandHandler('about', about)
+help_handler = CommandHandler('help', help_cmd)
 get_handler = CommandHandler('get', get)
 unknown_handler = MessageHandler(Filters.command, unknown)
 unknown_text_handler = MessageHandler(Filters.text, unknown_text)
@@ -38,6 +40,8 @@ unknown_text_handler = MessageHandler(Filters.text, unknown_text)
 
 # Adding Handlers
 dispatcher.add_handler(start_handler)
+dispatcher.add_handler(about_handler)
+dispatcher.add_handler(help_handler)
 dispatcher.add_handler(get_handler)
 dispatcher.add_error_handler(error)
 dispatcher.add_handler(unknown_handler)

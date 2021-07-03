@@ -29,11 +29,11 @@ def auth(update, context, filename, silent: bool):
         db.insert(formatted_data)
         if not silent:
             context.bot.send_message(
-                chat_id=update.effective_chat.id, text=f"Hi {json_data.first_name}\nYou are Sucessfully Registered to AyImageBot Service.\nUse /get `<your-search>` to find a image.\nThank You")
+                chat_id=update.effective_chat.id, text=f"Hi {json_data.first_name}\nYou are Sucessfully Registered to AyImageBot Service.\nUse /get `<your-search>` to find a image.\nFor more info type /help\nThank You")
     else:
         if not silent:
             context.bot.send_message(
-                chat_id=update.effective_chat.id, text=f"Hi {json_data.first_name}\nWelcome Back again\nYou are Already Registered to AyImageBot Service.\nUse /get `<your-search>` to find a image.\nThank You")
+                chat_id=update.effective_chat.id, text=f"Hi {json_data.first_name}\nWelcome Back again\nYou are Already Registered to AyImageBot Service.\nUse /get `<your-search>` to find a image.\nFor more info type /help\nThank You")
         db.update({'username': json_data.username},
                   Users.id == json_data.id)
         db.update({'first_name': json_data.first_name},
