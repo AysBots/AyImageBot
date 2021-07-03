@@ -3,3 +3,5 @@
 test
 __pycache__/
 data.json
+auth_data.json
+search_data.txt

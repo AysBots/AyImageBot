@@ -2,8 +2,9 @@ from telegram.ext import CallbackContext
 from telegram import Update
 from .urls import get_image, get_final_image, fetch_unsplash_api
 from .userauth import auth, update_requests
-from .variables import DATAFILE, UNSPLASH_CLIENT_KEY
+from .variables import DATAFILE, UNSPLASH_CLIENT_KEY, SEARCHDATAFILE
 import os
+from .snips import searchdata
 
 
 def start(update: Update, context: CallbackContext):
@@ -26,6 +27,7 @@ def unknown_text(update: Update, context: CallbackContext):
 
 def get(update, context):
     msg = update.message.text
+    searchdata(text=msg, filename=SEARCHDATAFILE)
     if msg == "" or msg == "/get" or msg == "/get ":
         msg = "random"
     else:
@@ -50,4 +52,3 @@ def get(update, context):
                 chat_id=update.effective_chat.id, text="Sorry, I am facing some problem.\nPlease try again.")
         auth(update=update, context=context, filename=DATAFILE, silent=True)
         update_requests(update=update, filename=DATAFILE)
-        
