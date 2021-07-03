@@ -5,7 +5,9 @@
 ![NOTE](https://img.shields.io/badge/NOTE-BOT%20IS%20TURNED%20OFF-blue)
 
 # AyImageBot
-![image](https://github.com/AysBots/AyImageBot/blob/main/assets/botlogo.png)
+<p align="center">
+  <img src="https://github.com/AysBots/AyImageBot/blob/main/assets/botlogo.png">
+</p>
 
 ## What is AyImageBot ?
 
