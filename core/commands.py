@@ -1,5 +1,5 @@
 from telegram.ext import CallbackContext
-from telegram import Update
+from telegram import Update, ParseMode
 from .urls import get_image, get_final_image, fetch_unsplash_api
 from .userauth import auth, update_requests
 from .variables import DATAFILE, UNSPLASH_CLIENT_KEY, SEARCHDATAFILE
@@ -50,10 +50,10 @@ def get(update, context):
         context.bot.send_message(
             chat_id=update.effective_chat.id, text=f"Sending Image.\nPlease Wait...")
         try:
-            get_final_image(CLIENT_KEY=UNSPLASH_CLIENT_KEY,
-                            query=msg, filename=image_name)
+            caption = get_final_image(CLIENT_KEY=UNSPLASH_CLIENT_KEY,
+                                        query=msg, filename=image_name)
             context.bot.sendPhoto(
-                chat_id=update.effective_chat.id, photo=open(image_name, 'rb'))
+                chat_id=update.effective_chat.id, photo=open(image_name, 'rb'), caption=caption, parse_mode=ParseMode.HTML) #
             # update.message.reply_photo(open('image.jpeg','rb'))
             os.remove(image_name)
         except:
