@@ -44,10 +44,7 @@ def get(update, context):
         msg = "random"
     else:
         msg = msg.split(" ")[1:]
-        str1 = ""
-        for i in msg:
-            str1 = str1+i
-        msg = str1
+        msg = "+".join(msg)
     image_name = str(update.effective_user.id) + '.jpeg'
     if update.effective_chat.type == "private":
         context.bot.send_message(
