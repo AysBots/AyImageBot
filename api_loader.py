@@ -7,12 +7,12 @@ try:
 except:
     AYIMAGEBOT_API_KEY = os.environ.get("AYIMAGEBOT_API_KEY")
 
-# GET SERVER URL
+# GET SERVER NAME
 try:
     dotenv.load_dotenv()
-    SERVER_URL = os.getenv("SERVER_URL")
+    SERVER_NAME = os.getenv("SERVER_NAME")
 except:
-    SERVER_URL = os.environ.get("SERVER_URL")
+    SERVER_NAME = os.environ.get("SERVER_NAME")
 
 
 # UNSPLASH IMAGE API KEY
