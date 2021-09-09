@@ -2,9 +2,9 @@ import os
 import dotenv
 import logging
 from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
-from telegram import Update
+from telegram import Update, Bot
 from core.commands import start, help_cmd, about, unknown, unknown_text, get
-from api_loader import AYIMAGEBOT_API_KEY
+from api_loader import AYIMAGEBOT_API_KEY, SERVER_NAME, PORT
 
 
 # Initialize Bot Key
@@ -22,6 +22,11 @@ print("[+] LOGGER STARTED.....")
 # Check for errors
 def error(update: Update, context: CallbackContext):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
+
+
+# SETWEBHOOK 
+bot = Bot(token = API_KEY)
+bot.setWebhook(f"https://{SERVER_NAME}.herokuapp.com/{API_KEY}")
 
 
 # Initialize Updater & Dispatcher
@@ -49,5 +54,5 @@ dispatcher.add_handler(unknown_text_handler)
 
 
 # Starting Bot
-updater.start_polling()
+updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=API_KEY, webhook_url=f"https://{SERVER_NAME}.herokuapp.com/{API_KEY}")
 updater.idle()
