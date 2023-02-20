@@ -23,5 +23,5 @@ tornado==6.1
 typing-extensions==3.10.0.0
 tzlocal==2.1
 urllib3==1.26.5
-Werkzeug==2.0.1
+Werkzeug==2.2.3
 zipp==3.4.1
