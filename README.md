@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Bot](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://telegram.me/AyImageBot)
 ![NOTE](https://img.shields.io/badge/NOTE-BOT%20IS%20RUNNING-green)
-
+![GitHub repo size](https://img.shields.io/github/repo-size/AysBots/AyImageBot)
 # AyImageBot
 <p align="center">
   <img src="https://github.com/AysBots/AyImageBot/blob/main/assets/botlogo.png">
