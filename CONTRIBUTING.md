@@ -12,15 +12,15 @@ Always submit a PR against a "Claimed Issue" that's been assigned to you. If an 
 
 - Go to issue tab
 
-![image](https://github.com/AysBots/AyImageBot/blob/main/assets/contributing1.png)
+![image](contributing1.png)
 
 - Raise a new issue or check if already exists.
 
-![image](https://github.com/AysBots/AyImageBot/blob/main/assets/contributing2.png)
+![image](assets/contributing2.png)
 
 - Finally submit the pull request.
 
-![image](https://github.com/AysBots/AyImageBot/blob/main/assets/contributing3.png)
+![image](assets/contributing3.png)
 
 ## Formatting
 
@@ -41,6 +41,17 @@ Remember to:
 
 - Capitalize the subject line
 - Use the imperative mood in the subject line
+
+## Development Requirements
+- Get Free image api from [Unsplash Developers](https://unsplash.com/developers)
+- Get Free telegram bot api from [Telegram Botfather](https://t.me/BotFather)
+- Create ```.env``` file
+```
+AYIMAGEBOT_API_KEY = '<telegram-bot-api-here>'
+UNSPLASH_CLIENT_KEY = '<unsplash-api-here>'
+
+```
+
 
 ## *Important* for contributors:
 - If you are adding a *new feature*, then create a new file / modify files in `contrib` directory only.
