@@ -9,8 +9,8 @@ Flask==2.0.1
 idna==2.10
 importlib-metadata==4.5.0
 itsdangerous==2.0.1
-Jinja2==3.0.1
-MarkupSafe==2.0.1
+Jinja2
+MarkupSafe
 pycodestyle==2.7.0
 python-dotenv==0.17.1
 python-telegram-bot==13.6
@@ -23,5 +23,5 @@ tornado==6.1
 typing-extensions==3.10.0.0
 tzlocal==2.1
 urllib3==1.26.5
-Werkzeug==2.2.3
+Werkzeug
 zipp==3.4.1
