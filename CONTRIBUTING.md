@@ -12,7 +12,7 @@ Always submit a PR against a "Claimed Issue" that's been assigned to you. If an 
 
 - Go to issue tab
 
-![image](contributing1.png)
+![image](assets/contributing1.png)
 
 - Raise a new issue or check if already exists.
 
